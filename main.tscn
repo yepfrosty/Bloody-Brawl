@@ -1,0 +1,144 @@
+[gd_scene load_steps=11 format=3 uid="uid://d1h3kg0u352li"]
+
+[ext_resource type="Script" uid="uid://2qy8y4ov2ggc" path="res://main.gd" id="1_5vw27"]
+[ext_resource type="Texture2D" uid="uid://cp71mwupabjwi" path="res://icon.svg" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://1rpa1xirsxny" path="res://player.tscn" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://bqgualjkgukam" path="res://camera_2d.gd" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://bppdmsl8qokki" path="res://Assets/origbig copy 5.png" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://c225j1puo6eiu" path="res://label.gd" id="4_lquwl"]
+[ext_resource type="Script" uid="uid://wy0yw7su1f5n" path="res://reset_button.gd" id="5_272bh"]
+[ext_resource type="Script" uid="uid://b0w85yv4u7q1f" path="res://hazard.gd" id="6_7mycd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(1278, 276)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(13932, 28)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_5vw27")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2(2744.0002, 382.99982)
+rotation = -1.9460421
+scale = Vector2(1.4, 0.49000004)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D4"]
+position = Vector2(642.5, 535.5)
+scale = Vector2(10.1640625, 2.1953125)
+texture = ExtResource("1_ig7tw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(642, 533)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(187, 162.99998)
+scale = Vector2(0.7, 0.7)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(642.5, 535.5)
+scale = Vector2(10.1640625, 2.1953125)
+texture = ExtResource("1_ig7tw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(642, 533)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Player 1" parent="." instance=ExtResource("2_0xm2m")]
+position = Vector2(-443, 96)
+player_num = "1"
+
+[node name="Player 2" parent="." instance=ExtResource("2_0xm2m")]
+position = Vector2(1813, -33)
+player_num = "2"
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(-916, -100.000015)
+scale = Vector2(0.7, 0.7)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(642.5, 535.5)
+scale = Vector2(10.1640625, 2.1953125)
+texture = ExtResource("1_ig7tw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(642, 533)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(586, 320)
+zoom = Vector2(0.25, 0.25)
+limit_enabled = false
+script = ExtResource("3_h2yge")
+
+[node name="Label" type="Label" parent="Camera2D"]
+visible = false
+offset_left = -462.00003
+offset_top = -443.00006
+offset_right = -349.00003
+offset_bottom = -420.00006
+scale = Vector2(10, 10)
+text = "PLACEHOLDER"
+script = ExtResource("4_lquwl")
+
+[node name="ResetButton" type="Button" parent="Camera2D"]
+visible = false
+offset_left = -206.0
+offset_top = -147.0
+offset_right = -118.0
+offset_bottom = -116.0
+scale = Vector2(6, 6)
+text = "Play Again"
+script = ExtResource("5_272bh")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(1323, -112.99999)
+scale = Vector2(0.7, 0.7)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
+position = Vector2(642.5, 535.5)
+scale = Vector2(10.1640625, 2.1953125)
+texture = ExtResource("1_ig7tw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(642, 533)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(221.99994, -301.00012)
+scale = Vector2(5, 5)
+texture = ExtResource("4_1bvp3")
+
+[node name="Hazard" type="Area2D" parent="."]
+position = Vector2(-1725, 1463)
+script = ExtResource("6_7mycd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hazard"]
+position = Vector2(2835, 4)
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="."]
+position = Vector2(-1955.0001, 219.99997)
+rotation = 5.2010813
+scale = Vector2(1.4, 0.49000004)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D5"]
+position = Vector2(642.5, 535.5)
+scale = Vector2(10.1640625, 2.1953125)
+texture = ExtResource("1_ig7tw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5"]
+position = Vector2(642, 533)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[connection signal="died" from="Player 1" to="Camera2D" method="_on_player_died"]
+[connection signal="died" from="Player 1" to="Camera2D/Label" method="_on_player_died"]
+[connection signal="died" from="Player 2" to="Camera2D" method="_on_player_2_died"]
+[connection signal="died" from="Player 2" to="Camera2D/Label" method="_on_player_2_died"]
+[connection signal="game_ended" from="Camera2D/Label" to="Camera2D/ResetButton" method="_on_label_game_ended"]
+[connection signal="pressed" from="Camera2D/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="Camera2D/ResetButton" to="Camera2D/ResetButton" method="_on_pressed"]
+[connection signal="hazarded" from="Hazard" to="Camera2D" method="_on_hazard_hazarded"]
+[connection signal="hazarded" from="Hazard" to="Camera2D/Label" method="_on_hazard_hazarded"]
