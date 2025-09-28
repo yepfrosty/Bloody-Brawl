@@ -17,6 +17,8 @@ signal died()
 @onready var jab_timer = $JabCooldown
 @onready var hit_sound = $AudioStreamPlayer2D
 @onready var dmg_sound = $AudioStreamPlayer2D2
+@onready var dash_timer = $DashCooldown
+var dash_ready = true
 var jab_off_cd = true
 var available_jumps = 2
 
@@ -58,7 +60,7 @@ func _physics_process(delta: float) -> void:
 		
 		
 		if Input.is_action_just_pressed("Up"+player_num) and available_jumps > 0:
-			velocity.y = -2500
+			velocity.y = -2000
 			if animation.current_animation != "Attack":
 				animation.play("Jump")
 			available_jumps -= 1
@@ -67,13 +69,24 @@ func _physics_process(delta: float) -> void:
 			velocity.y = 2000
 			global_position.y += 2
 			
+		#if Input.is_action_just_pressed("Dash"+player_num) and dash_ready:
+			#dash_ready = false
+			#dash_timer.start()
+			#if direction != 0:
+				#velocity.x += 3000*direction
+				#stun_me()
+			#else:
+				#velocity.x += 3000*last_dir
+				#stun_me()
+			
+		
 		if Input.is_action_just_pressed("Jab"+player_num) and jab_off_cd:
 			var enemy = 0
 			animation.play("Attack", -1, 4)
 			jab_off_cd = false
 			jab_timer.start()
 			for body in jab_box.get_overlapping_bodies():
-				print(jab_box.get_overlapping_bodies())
+				#print(jab_box.get_overlapping_bodies())
 				if body is CharacterBody2D and body != $".":
 					enemy = body
 				#print($".")
@@ -115,3 +128,7 @@ func _on_stun_timer_timeout() -> void:
 
 func _on_jab_cooldown_timeout() -> void:
 	jab_off_cd = true
+
+
+func _on_dash_cooldown_timeout() -> void:
+	dash_ready = true
