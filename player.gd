@@ -15,7 +15,8 @@ signal died()
 @onready var animation = $AnimationPlayer
 @onready var sprite = $AnimatedSprite2D
 @onready var jab_timer = $JabCooldown
-@onready var audio_player = $AudioStreamPlayer2D
+@onready var hit_sound = $AudioStreamPlayer2D
+@onready var dmg_sound = $AudioStreamPlayer2D2
 var jab_off_cd = true
 var available_jumps = 2
 
@@ -42,7 +43,9 @@ func _physics_process(delta: float) -> void:
 				available_jumps = 2
 			
 		elif animation.current_animation != "Attack":
-			animation.play("Hurt")
+			#animation.play("Hurt")
+			#dmg_sound.play()
+			pass
 
 		
 		if last_dir != direction and direction != 0:
@@ -61,7 +64,7 @@ func _physics_process(delta: float) -> void:
 			available_jumps -= 1
 		
 		if Input.is_action_pressed("Down"+player_num) :
-			velocity.y = 2500
+			velocity.y = 2000
 			global_position.y += 2
 			
 		if Input.is_action_just_pressed("Jab"+player_num) and jab_off_cd:
@@ -79,16 +82,21 @@ func _physics_process(delta: float) -> void:
 				
 				enemy.health -= 25
 				enemy.available_jumps -= 1
-				audio_player.play()
+				hit_sound.play()
 				
 				
 				if direction != 0:
 					enemy.velocity = Vector2(2500*direction, -2000)
 					enemy.stun_me()
+					animation.play("Hurt")
+					dmg_sound.play()
 				else:
 					enemy.velocity = Vector2(2500*last_dir, -2000)
 					enemy.stun_me()
+					enemy.animation.play("Hurt")
+					dmg_sound.play()
 			else:
+				dmg_sound.play()
 				health -= 10
 		move_and_slide()
 	else:
