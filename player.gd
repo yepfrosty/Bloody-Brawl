@@ -15,6 +15,7 @@ signal died()
 @onready var animation = $AnimationPlayer
 @onready var sprite = $AnimatedSprite2D
 @onready var jab_timer = $JabCooldown
+@onready var audio_player = $AudioStreamPlayer2D
 var jab_off_cd = true
 var available_jumps = 2
 
@@ -78,6 +79,8 @@ func _physics_process(delta: float) -> void:
 				
 				enemy.health -= 25
 				enemy.available_jumps -= 1
+				audio_player.play()
+				
 				
 				if direction != 0:
 					enemy.velocity = Vector2(2500*direction, -2000)
