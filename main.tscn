@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://d1h3kg0u352li"]
+[gd_scene load_steps=17 format=4 uid="uid://d1h3kg0u352li"]
 
 [ext_resource type="Script" uid="uid://2qy8y4ov2ggc" path="res://main.gd" id="1_5vw27"]
 [ext_resource type="PackedScene" uid="uid://1rpa1xirsxny" path="res://player.tscn" id="2_0xm2m"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://wy0yw7su1f5n" path="res://reset_button.gd" id="5_272bh"]
 [ext_resource type="Script" uid="uid://b0w85yv4u7q1f" path="res://hazard.gd" id="6_7mycd"]
 [ext_resource type="Texture2D" uid="uid://degba4ufu76k0" path="res://Assets/Tilemap/tilemap-backgrounds_packed.png" id="7_kek77"]
+[ext_resource type="FontFile" uid="uid://bewh5myavxk8e" path="res://Assets/MinecraftRegular-Bmg3.otf" id="8_4c57u"]
 [ext_resource type="Texture2D" uid="uid://ymgmcrg0gv2h" path="res://Assets/craftpix-net-141897-free-prototype-2d-platformer-32x32-pixel-tileset/1 Tiles/Tileset1.png" id="9_kek77"]
 [ext_resource type="Texture2D" uid="uid://bm0jvji0kth2r" path="res://Assets/Tilemap/tilemap_packed.png" id="10_4c57u"]
 
@@ -642,21 +643,23 @@ script = ExtResource("3_h2yge")
 
 [node name="Label" type="Label" parent="Camera2D"]
 visible = false
-offset_left = -704.0
-offset_top = -544.0
-offset_right = 700.0
-offset_bottom = -271.0
+offset_left = -693.0
+offset_top = -487.0
+offset_right = 711.0
+offset_bottom = -214.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_4c57u")
 theme_override_font_sizes/font_size = 200
 text = "PLACEHOLDER"
 script = ExtResource("4_lquwl")
 
 [node name="ResetButton" type="Button" parent="Camera2D"]
 visible = false
-offset_left = -206.0
-offset_top = -147.0
-offset_right = -118.0
-offset_bottom = -116.0
+offset_left = -260.0
+offset_top = -202.0
+offset_right = 258.0
+offset_bottom = -94.0
+theme_override_fonts/font = ExtResource("8_4c57u")
 theme_override_font_sizes/font_size = 100
 text = "Play Again"
 script = ExtResource("5_272bh")
