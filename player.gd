@@ -59,9 +59,10 @@ func _physics_process(delta: float) -> void:
 				animation.play("Jump")
 			available_jumps -= 1
 		
-		if Input.is_action_just_pressed("Down"+player_num) and not is_on_floor():
+		if Input.is_action_pressed("Down"+player_num) :
 			velocity.y = 2500
-		
+			global_position.y += 1
+			
 		if Input.is_action_just_pressed("Jab"+player_num) and jab_off_cd:
 			animation.play("Attack", -1, 4)
 			jab_off_cd = false
