@@ -3,6 +3,8 @@ extends Node2D
 @onready var player2 = $"Player 2"
 @onready var score_label = $"Camera2D/Label"
 @onready var camera = $"Camera2D"
+@onready var music = $Camera2D/AudioStreamPlayer2D
+
 
 func _on_reset_button_pressed() -> void:
 	player1.health = 100
