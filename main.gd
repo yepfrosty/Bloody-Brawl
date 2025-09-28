@@ -7,8 +7,8 @@ extends Node2D
 func _on_reset_button_pressed() -> void:
 	player1.health = 100
 	player2.health = 100
-	player1.global_position = Vector2(-443,96)
-	player2.global_position = Vector2(1813,-33)
+	player1.global_position = Vector2(-897,-394)
+	player2.global_position = Vector2(963,-446)
 	camera.locked = false
 	score_label.shown = false
 	score_label.visible = false

@@ -61,17 +61,19 @@ func _physics_process(delta: float) -> void:
 		
 		if Input.is_action_pressed("Down"+player_num) :
 			velocity.y = 2500
-			global_position.y += 1
+			global_position.y += 2
 			
 		if Input.is_action_just_pressed("Jab"+player_num) and jab_off_cd:
+			var enemy = 0
 			animation.play("Attack", -1, 4)
 			jab_off_cd = false
 			jab_timer.start()
-			if jab_box.get_overlapping_bodies().size() > 1:
-				var enemy = jab_box.get_overlapping_bodies()[1]
+			for body in jab_box.get_overlapping_bodies():
+				print(jab_box.get_overlapping_bodies())
+				if body is CharacterBody2D and body != $".":
+					enemy = body
 				#print($".")
-				if jab_box.get_overlapping_bodies()[0] != $".":
-					enemy = jab_box.get_overlapping_bodies()[0]
+			if enemy is CharacterBody2D:
 				
 				
 				enemy.health -= 25

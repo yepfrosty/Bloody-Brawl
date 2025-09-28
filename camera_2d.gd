@@ -21,15 +21,21 @@ func _process(delta: float) -> void:
 
 
 func _on_player_died() -> void:
-	global_position = Vector2(586, 320)
+	global_position = Vector2(-3, -3)
+	var target_zoom = Vector2(0.25, 0.25)
+	zoom = zoom.lerp(target_zoom, smooth_speed)
 	locked = true
 
 
 func _on_player_2_died() -> void:
-	global_position = Vector2(586, 320)
+	global_position = Vector2(-3, -3)
+	var target_zoom = Vector2(0.25, 0.25)
+	zoom = zoom.lerp(target_zoom, smooth_speed)
 	locked = true
 
 
 func _on_hazard_hazarded(name: Variant) -> void:
-	global_position = Vector2(586, 320)
+	global_position = Vector2(-3, -3)
+	var target_zoom = Vector2(0.25, 0.25)
+	zoom = zoom.lerp(target_zoom, smooth_speed)
 	locked = true
